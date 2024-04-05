@@ -19,6 +19,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.jc.Ecommerce.dto.ProductDTO;
 import com.jc.Ecommerce.services.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -47,7 +49,7 @@ public class ProductController {
      
 
 	@PutMapping
-	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO productDTO) {
+	public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO productDTO) {
 	 
 		productDTO = service.insert(productDTO);	
 		
@@ -60,7 +62,7 @@ public class ProductController {
      
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> update( @PathVariable Long id,@RequestBody ProductDTO productDTO ) {
+	public ResponseEntity<ProductDTO> update( @PathVariable Long id,@Valid @RequestBody ProductDTO productDTO ) {
 	 
 		productDTO = service.update(id,productDTO);
 		return ResponseEntity.ok(productDTO);		

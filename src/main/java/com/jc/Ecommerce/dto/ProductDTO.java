@@ -2,13 +2,23 @@ package com.jc.Ecommerce.dto;
 
 import com.jc.Ecommerce.entity.Product;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class ProductDTO {
 	
 	
 	
 	private Long id;
+	@NotBlank(message = "Campo requerido")
+	@Size(min = 3, max = 80, message = "nome precisa de ter 3 a 80 caracteres")
 	private String name;
+	@Size(min = 10, message = "nome precisa de ter 3 a 80 caracteres")
 	private String description;
+	@Positive(message = "Preço tem que ser positvo")
 	private Double price;
 	private String imgUrl;
 	
